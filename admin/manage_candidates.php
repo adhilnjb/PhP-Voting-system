@@ -9,17 +9,17 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_candidate'])) {
-    // Check if name and description are set
+  
     $name = isset($_POST['name']) ? trim($_POST['name']) : null;
     $description = isset($_POST['description']) ? trim($_POST['description']) : null;
 
-    // Prevent inserting empty values
+
     if (empty($name)) {
         echo "<p style='color: red;'>Candidate name is required!</p>";
     } else {
         $photo = null;
 
-        // File upload handling
+       
         if (!empty($_FILES['photo']['name']) && $_FILES['photo']['error'] == 0) {
             $target_dir = "../images/";
             $photo_name = time() . "_" . basename($_FILES["photo"]["name"]);
@@ -27,10 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_candidate'])) {
             move_uploaded_file($_FILES["photo"]["tmp_name"], $photo);
         }
 
-        // Insert into the database
         $stmt = $pdo->prepare("INSERT INTO candidates (name, description, photo) VALUES (?, ?, ?)");
         if ($stmt->execute([$name, $description, $photo])) {
-            header("Location: manage_candidates.php"); // Redirect to prevent duplicate submission
+            header("Location: manage_candidates.php"); 
             exit;
         } else {
             echo "<p style='color: red;'>Error adding candidate.</p>";
@@ -46,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_candidate'])) {
             <div class="col-md-12">
                 <h2>Manage Candidates</h2>
                 <?php 
-                // ... (Display success/error messages) ...
+              
                 ?>
             </div>
         </div>
@@ -72,7 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_candidate'])) {
                 </form>
             </div>
 
-         <!-- Candidate List -->
          <div class="col-md-6">
                 <h3 style="color: black;">Candidate List</h3>
                 <div class="input-group mb-3">
@@ -124,7 +122,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_candidate'])) {
     </div>
 </div>
 
-<!-- jQuery for Search -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {

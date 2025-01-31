@@ -12,12 +12,12 @@ if (isset($_GET['delete'])) {
     $candidate_id = $_GET['delete'];
 
     try {
-        // Delete the candidate from the database
+      
         $stmt = $pdo->prepare("DELETE FROM candidates WHERE id = :id");
         $stmt->bindParam(':id', $candidate_id);
         $stmt->execute();
 
-        // Optionally, delete the candidate's photo if it exists
+   
         $stmt = $pdo->prepare("SELECT photo FROM candidates WHERE id = :id");
         $stmt->bindParam(':id', $candidate_id);
         $stmt->execute();
@@ -26,7 +26,7 @@ if (isset($_GET['delete'])) {
         if (!empty($result['photo'])) {
             $photo_path = $result['photo'];
             if (file_exists($photo_path)) {
-                unlink($photo_path); // Delete the photo file
+                unlink($photo_path); 
             }
         }
 
@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
     header("Location: manage_candidates.php");
     exit;
 } else {
-    // If no candidate ID is provided, redirect to manage_candidates.php
+  
     header("Location: manage_candidates.php");
     exit;
 }

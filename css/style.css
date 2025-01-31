@@ -2,7 +2,7 @@
    color:white;
 }
 .hero-section {
-   min-height: 92vh; /* Set minimum height to viewport height */
+   min-height: 92vh; 
    display: flex;
    justify-content: center;
    align-items: center;
@@ -13,28 +13,28 @@
    
 }
   .navbar {
-        background-color: #ffffff; /* Example: White background */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example: Subtle shadow */
-        padding: 1rem 0; /* Adjust padding as needed */
+        background-color: #ffffff; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        padding: 1rem 0;
     }
 
     .navbar-brand {
-        font-size: 1.5rem; /* Example: Larger brand font size */
-        color: #007bff; /* Example: Blue brand color */
+        font-size: 1.5rem; 
+        color: #007bff; 
     }
 
     .navbar-nav .nav-link {
-        margin-left: 1rem; /* Example: Spacing between nav items */
-        color: #333; /* Example: Darker text color */
-        transition: color 0.3s ease; /* Smooth color transition on hover */
+        margin-left: 1rem; 
+        color: #333; 
+        transition: color 0.3s ease; 
     }
 
     .navbar-nav .nav-link:hover {
-        color: #007bff; /* Example: Blue color on hover */
+        color: #007bff; 
     }
 
     .navbar-toggler {
-        border: none; /* Remove default border */
+        border: none; 
     }
 
     .navbar-toggler-icon {
@@ -44,7 +44,7 @@
     /* Style the dropdown menu */
     .dropdown-menu {
         border: none;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Example: Add a shadow to the dropdown */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); 
     }
 
     .dropdown-item {
@@ -52,30 +52,30 @@
     }
 
     .dropdown-item:hover {
-        background-color: #f8f9fa; /* Example: Light background on hover */
+        background-color: #f8f9fa; 
         color: #007bff;
     }
  
  .card {
-   border: 1px solid #dee2e6; /* Add a border to the card */
+   border: 1px solid #dee2e6;
    border-radius: 5px;
  }
  .user-login-card {
-   background-color: #f8f9fa; /* Example background color */
-   border: 1px solid #ced4da; /* Example border */
-   /* Add any other custom styles you want for the card */
+   background-color: #f8f9fa; 
+   border: 1px solid #ced4da;
+
 }
 
 .user-login-card .card-body {
-   padding: 2rem; /* Example padding */
+   padding: 2rem; 
 }
 
 .user-login-card .btn-primary {
-   background-color: #007bff; /* Example button color */
+   background-color: #007bff; 
    border-color: #007bff;
 }
 
-/* Style the form elements as needed */
+
 .user-login-card .form-label {
-   font-weight: bold; /* Example: Make labels bolder */
+   font-weight: bold; 
 }

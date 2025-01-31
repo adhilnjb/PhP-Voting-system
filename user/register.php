@@ -8,9 +8,7 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
 
-    // Input validation (improved)
-    $errors = []; // Array to store error messages
-
+    $errors = [];
     if (empty($name)) {
         $errors[] = "Name is required.";
     }
@@ -21,27 +19,27 @@ if (isset($_POST['register'])) {
     }
     if (empty($password)) {
         $errors[] = "Password is required.";
-    } elseif (strlen($password) < 6) { // Example: Minimum password length
+    } elseif (strlen($password) < 6) {
         $errors[] = "Password must be at least 6 characters long.";
     }
     if ($password !== $confirmPassword) {
         $errors[] = "Passwords do not match.";
     }
 
-    if (empty($errors)) { // Proceed only if there are no validation errors
+    if (empty($errors)) { 
         try {
-            // Check if email already exists (using prepared statement)
+            
             $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                $errors[] = "Email already exists."; // Add to errors array
+                $errors[] = "Email already exists."; 
             } else {
-                // Hash the password (using password_hash())
+           
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                // Insert user into the database (using prepared statement)
+             
                 $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
                 $stmt->bindParam(':name', $name);
                 $stmt->bindParam(':email', $email);
@@ -49,8 +47,8 @@ if (isset($_POST['register'])) {
                 $stmt->execute();
 
                 $success = "Registration successful. You can now login.";
-                // Optionally redirect to login page after successful registration
-                header("Location: index.php"); // Redirect to the login page
+              
+                header("Location: index.php"); 
                 exit;
             }
 
